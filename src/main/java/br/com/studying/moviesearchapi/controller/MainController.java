@@ -1,8 +1,11 @@
 package br.com.studying.moviesearchapi.controller;
 
 import java.net.http.HttpResponse;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.studying.moviesearchapi.client.ClientHttpConfiguration;
+import br.com.studying.moviesearchapi.domain.Movie;
 import br.com.studying.moviesearchapi.service.ParseService;
 
 @RestController
@@ -21,7 +25,7 @@ public class MainController {
 	private String uri;
 
 	@GetMapping
-	public HttpResponse<String> getMovies(){
+	public HttpResponse<String> getMovies() throws ParseException{
 		
 		ClientHttpConfiguration client = new ClientHttpConfiguration();
 		ParseService service = new ParseService();
@@ -61,6 +65,20 @@ public class MainController {
 		List<String> releaseDateList = Arrays.stream(releaseDates).toList();
 		for(String date: releaseDateList) {
 			System.out.println(date);
+		}
+		
+		List<Movie> movieList = new ArrayList<>();
+		
+		int cont = 0;
+		for(String title: titlesList) {
+			Date date = new SimpleDateFormat("yyyy-MM-dd").parse(releaseDateList.get(cont));
+			Movie movie = new Movie(title, ratingList.get(cont), urlImagesList.get(cont), date);
+			movieList.add(movie);
+			cont++;
+		}
+		
+		for(Movie movie: movieList) {
+			System.out.println(movie.toString());
 		}
 		
 		return null;
