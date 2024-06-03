@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MoviesearchapiApplication {
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(MoviesearchapiApplication.class, args);
 
 	}

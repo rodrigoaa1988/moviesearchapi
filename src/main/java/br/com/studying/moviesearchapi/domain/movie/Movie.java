@@ -1,4 +1,4 @@
-package br.com.studying.moviesearchapi.domain;
+package br.com.studying.moviesearchapi.domain.movie;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

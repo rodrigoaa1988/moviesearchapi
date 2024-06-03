@@ -1,4 +1,4 @@
-package br.com.studying.moviesearchapi.client;
+package br.com.studying.moviesearchapi.domain.movie;
 
 import java.io.IOException;
 import java.net.URI;
@@ -6,7 +6,10 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class ClientHttpConfiguration {
+import org.springframework.stereotype.Service;
+
+@Service
+public class MovieHttpClient {
 	
 	public HttpResponse<String> getMovies(String uri){
 		HttpResponse<String> response = null;	

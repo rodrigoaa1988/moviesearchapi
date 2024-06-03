@@ -1,6 +1,9 @@
-package br.com.studying.moviesearchapi.service;
+package br.com.studying.moviesearchapi.domain.movie;
 
-public class ParseService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class MovieParseService {
 
 	public String parseAllMovies(String json) {
 
